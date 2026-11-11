@@ -1,0 +1,7 @@
+streamlit
+opencv-python-headless
+pytesseract
+rapidfuzz
+pandas
+matplotlib
+pyobjc-framework-Vision; sys_platform == "darwin"

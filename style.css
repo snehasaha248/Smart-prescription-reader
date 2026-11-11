@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+/* Extra styling for the Streamlit dashboard (loaded by app.py) */
+
+:root {
+  --ink: #1e293b; --muted: #64748b; --line: #e2e8f0; --card: #ffffff;
+  --teal: #0f766e; --teal-dark: #134e4a;
+  --ok: #15803d; --ok-bg: #dcfce7; --warn: #b45309; --warn-bg: #fef3c7; --bad: #b91c1c; --bad-bg: #fee2e2;
+  --shadow: 0 1px 2px rgba(15, 23, 42, .06), 0 6px 18px rgba(15, 23, 42, .07);
+}
+html, body, [class*="css"], .stMarkdown, .stText, button, input { font-family: 'Inter', sans-serif; }
+.block-container { padding-top: 2rem; max-width: 1280px; }
+
+/* Header */
+.hero { background: linear-gradient(135deg, var(--teal-dark) 0%, var(--teal) 60%, #14b8a6 100%);
+        color: #fff; border-radius: 18px; padding: 28px 32px; margin-bottom: 18px; box-shadow: var(--shadow); }
+.hero h1 { color: #fff; font-size: 2.2rem; font-weight: 700; margin: 4px 0 6px; padding: 0; }
+.hero p { color: #ccfbf1; font-size: 1.02rem; max-width: 760px; margin: 0 0 14px; }
+.hero-note { display: inline-block; background: rgba(255, 255, 255, .14); border: 1px solid rgba(255, 255, 255, .25);
+             border-radius: 999px; padding: 6px 14px; font-size: .85rem; }
+
+/* Sidebar */
+[data-testid="stSidebar"] { background: #ffffff; border-right: 1px solid var(--line); }
+.side-title { font-size: .75rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+              color: var(--muted); margin: 14px 0 6px; }
+
+/* Statistic tiles */
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 14px; margin: 6px 0 18px; }
+.tile { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px;
+        box-shadow: var(--shadow); border-top: 4px solid var(--teal); }
+.tile-label { color: var(--muted); font-size: .8rem; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; }
+.tile-value { color: var(--ink); font-size: 1.9rem; font-weight: 700; line-height: 1.2; margin-top: 4px; }
+.tile-note { color: var(--muted); font-size: .8rem; }
+
+/* White panels (Streamlit containers whose key starts with "panel") */
+[class*="st-key-panel"] { background: var(--card); border-radius: 14px !important; box-shadow: var(--shadow);
+                          border: 1px solid var(--line) !important; padding: 6px 4px; }
+.panel-title { font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+/* Keep the prescription photo compact (whole page still visible) */
+.st-key-panel_original img { max-height: 300px; object-fit: contain; }
+.st-key-panel_text textarea { font-size: .9rem; line-height: 1.45; }
+[data-testid="stExpander"] img { max-height: 460px; object-fit: contain; }  /* processed image with boxes */
+h3.section { color: var(--ink); font-weight: 700; font-size: 1.25rem; margin: 22px 0 10px;
+             padding-left: 10px; border-left: 4px solid var(--teal); }
+
+/* Medicine cards: large, high-contrast text for accessibility */
+.card-use { color: var(--muted); font-size: .95rem; margin-top: 4px; }
+.card-flags { margin: 10px 0 0; padding-left: 1.1rem; color: var(--warn); font-size: .9rem; }
+.badge { font-size: .75rem; font-weight: 700; padding: 4px 10px; border-radius: 999px; white-space: nowrap; }
+.badge.ok { background: var(--ok-bg); color: var(--ok); }
+.badge.warn { background: var(--warn-bg); color: var(--warn); }
+.badge.bad { background: var(--bad-bg); color: var(--bad); }
+
+/* Tabs */
+.stTabs [data-baseweb="tab-list"] { gap: 6px; border-bottom: 1px solid var(--line); }
+.stTabs [data-baseweb="tab"] { font-weight: 600; padding: 10px 16px; }
+
+/* Matching medicines in stock (inside each medicine card) */
+.match-title { margin-top: 12px; font-size: .8rem; font-weight: 700; letter-spacing: .06em;
+               text-transform: uppercase; color: var(--muted); }
+.match-table { width: 100%; border-collapse: collapse; margin-top: 6px; font-size: .95rem; }
+.match-table th { text-align: left; color: var(--muted); font-weight: 600; font-size: .8rem;
+                  padding: 6px 8px; border-bottom: 1px solid var(--line); }
+.match-table td { padding: 8px; border-bottom: 1px solid var(--line); vertical-align: middle; }
+.match-table tr:first-child + tr td { font-weight: 600; }
+.bar { display: inline-block; width: 80px; height: 8px; background: var(--line); border-radius: 999px;
+       margin-right: 8px; vertical-align: middle; overflow: hidden; }
+.bar span { display: block; height: 100%; background: var(--teal); border-radius: 999px; }
+.match-none { margin-top: 12px; color: var(--bad); font-size: .95rem; }
+.match-table td:not(:first-child), .match-table th { white-space: nowrap; }
+
+/* Compact medicine cards: click the arrow to expand the details */
+.card-list { display: flex; flex-direction: column; gap: 10px; }
+.med-card { background: var(--card); border: 1px solid var(--line); border-left: 4px solid var(--ok);
+            border-radius: 10px; box-shadow: 0 1px 2px rgba(15, 23, 42, .06); color: var(--ink); }
+.med-card.warn { border-left-color: var(--warn); }
+.med-card.bad { border-left-color: var(--bad); }
+.med-card summary { list-style: none; cursor: pointer; display: flex; align-items: center; gap: 12px;
+                    padding: 12px 16px; }
+.med-card summary::-webkit-details-marker { display: none; }
+.sum-main { flex: 1; min-width: 0; line-height: 1.35; }
+.card-title { font-size: 1.15rem; font-weight: 700; margin-right: 10px; }
+.card-dose { font-size: 1.05rem; }
+.card-stock { display: block; font-size: .88rem; color: var(--muted); margin-top: 2px; }
+.sum-side { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
+.sum-side .badge { font-size: .78rem; padding: 3px 10px; }
+.strips { background: #e0f2f1; color: var(--teal-dark); font-weight: 600; font-size: .78rem;
+          padding: 3px 9px; border-radius: 999px; white-space: nowrap; }
+.note-count { color: var(--warn); font-size: .8rem; font-weight: 600; white-space: nowrap; }
+.chevron { width: 9px; height: 9px; border-right: 2px solid var(--muted); border-bottom: 2px solid var(--muted);
+           transform: rotate(45deg); transition: transform .2s; margin: 0 2px 3px; flex-shrink: 0; }
+.med-card[open] .chevron { transform: rotate(-135deg); margin-bottom: -3px; }
+.card-body { padding: 4px 16px 14px; border-top: 1px solid var(--line); font-size: 1rem; }
+.card-body .card-use { font-size: .95rem; margin-top: 8px; }
+.card-body .match-title { margin-top: 10px; font-size: .78rem; }
+.card-body .match-table { font-size: .95rem; }
+.card-body .match-table td { padding: 7px 8px; }
+.quantity { font-size: .95rem; margin-top: 2px; }
+
+/* ===== Prescription Pad theme: warm paper and green ink ===== */
+:root { --ink: #2b2a26; --muted: #7a7363; --line: #e6dcc6; --card: #fffdf7;
+        --teal: #2f6f4f; --teal-dark: #1f4d37; --shadow: 0 2px 0 #e6dcc6; }
+.hero { background: #fffdf7; color: var(--ink);
+        border: 1px solid #e6dcc6; border-top: 8px solid #2f6f4f; border-radius: 6px; padding: 26px 30px; }
+.hero h1 { color: #1f4d37; font-weight: 700; }
+.hero p { color: var(--muted); font-style: italic; }
+.hero-note { background: transparent; border: 1px dashed #b9a98a; color: #7a5c2e; border-radius: 4px; }
+[data-testid="stSidebar"] { background: #f1eadb; border-right: 1px solid #e6dcc6; }
+.tile { border-top: none; border-radius: 6px; border-bottom: 3px solid #2f6f4f; }
+.tile-value { color: #1f4d37; }
+h3.section { border-left: none; padding-left: 0; color: #1f4d37;
+             border-bottom: 1px dashed #cdbf9f; padding-bottom: 6px; }
+.med-card { border-radius: 4px; border-left-width: 4px; }
+.strips { background: #e8f0e6; color: #1f4d37; }
+.badge.ok { background: #e8f0e6; color: #2f6f4f; }

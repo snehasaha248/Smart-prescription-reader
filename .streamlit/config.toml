@@ -1,0 +1,9 @@
+# Dashboard colours: "Prescription Pad" theme (Streamlit reads this file automatically)
+[theme]
+base = "light"
+primaryColor = "#2f6f4f"
+backgroundColor = "#f7f3ea"
+secondaryBackgroundColor = "#efe7d6"
+textColor = "#2b2a26"
+[browser]
+gatherUsageStats = false
