@@ -1,6 +1,6 @@
 # Smart Prescription Reader and Accessible Medicine Information System
 
-B.Tech final-year project. The app reads a prescription image, extracts medicine details,
+B.Tech Innovation project. The app reads a prescription image, extracts medicine details,
 **flags anything uncertain instead of guessing**, matches medicines to a pharmacy inventory,
 and requires a pharmacist to verify everything before dispensing.
 
